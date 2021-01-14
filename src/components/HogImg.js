@@ -19,7 +19,7 @@ const HogImg = (props) => {
     const thisHogImage = props.hogName.toLowerCase().split(" ").join("_")
     
     return(
-       <img className="ui card" src={hogImages[thisHogImage]} />
+       <img className="ui card" alt={props.hogName} src={hogImages[thisHogImage]} />
     )
 }
 

@@ -19,16 +19,12 @@ const App = () => {
   const changeSort = (newSort) => {
     setSort(newSort)
   }
-
-  useEffect(() => {
-    sortHogs()
-  }, [sort])
   
   const sortHogs = () => {
       let sortedHogs = [...theseHogs]
       if(sort === "name"){
         sortedHogs.sort((a, b) => (a.name > b.name ) ? 1 : -1)
-      } else if (sort == "weight"){
+      } else if (sort === "weight"){
         sortedHogs.sort((a, b) => (a.weight > b.weight ) ? 1 : -1)
       } else {
         sortedHogs = [...hogs]
@@ -36,7 +32,9 @@ const App = () => {
       setTheseHogs(sortedHogs)
   }
 
-  const greasedHogs = [...theseHogs].filter(eachHog => eachHog.greased == true)
+  useEffect(sortHogs, [sort])
+
+  const greasedHogs = [...theseHogs].filter(eachHog => eachHog.greased === true)
 
 
   return (
